@@ -38,13 +38,17 @@ headers = ['Time', 'Temperature', 'Pressure', 'Altitude',
 
 csvWriter.writerow(headers)
 
-while True:
+startTime = time.time()
+
+timestamp = time.time() - startTime
+
+while timestamp < 60:
 
     print("=" * 40)
 
     gps.update()
 
-    timestamp = time.time()
+    timestamp = time.time() - startTime
 
     print("Time: ", timestamp)
 
