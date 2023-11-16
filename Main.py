@@ -1,6 +1,7 @@
 import board
 import csv
 import digitalio
+import os
 import time
 
 import adafruit_gps # GPS
@@ -27,7 +28,11 @@ gps.send_command(b"PMTK314,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0")
 # Set update rate to once a second (1hz)
 gps.send_command(b"PMTK220,1000")
 
-csvFile = open('test.csv', 'w')
+inc = 0
+while os.path.exists('Results/Results_%s.csv' % inc):
+    inc += 1
+
+csvFile = open('Results/Results_%s.csv' % inc, 'w')
 csvWriter = csv.writer(csvFile)
 
 headers = ['Time', 'Temperature', 'Pressure', 'Altitude',
