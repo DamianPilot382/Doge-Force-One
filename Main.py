@@ -123,6 +123,3 @@ while True:
                        mag_x, mag_y, mag_z,
                        gyro_x, gyro_y, gyro_z,
                        gpsSensor.has_fix, lat, long])
-
-    # Sleep before next loop
-    time.sleep(0.5)
